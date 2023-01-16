@@ -62,7 +62,10 @@ app.get('/api/users/:_id/logs', (req, res,next)=>{
           "$lt": to
      }}).limit(limit).exec((err, exes) => {
       const count = exes.length
-      const log = exes.map(exe => {return {description: exe.description, duration: exe.duration, date: exe.date.toDateString()}})
+      const log = exes.map(exe => {return {
+        description: exe.description,
+        duration: exe.duration,
+        date: exe.date.toDateString()}})
         console.log(log)
        const response = {username, count, _id, log}
        res.send(response)
@@ -75,7 +78,7 @@ app.get('/api/users/:_id/logs', (req, res,next)=>{
       const count = exes.length
       const log = exes.map(exe => {return {
         description: exe.description,
-        uration: exe.duration,
+        duration: exe.duration,
         date: exe.date.toDateString()}})
       console.log(log)
       const response = {username, count, _id, log}
